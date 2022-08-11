@@ -1,0 +1,93 @@
+
+
+
+{% extends 'base-back.html.twig' %}
+
+{% block body %}
+
+    <h1 class="h3 mb-2 text-gray-800">Ajouter un Utilisateur
+
+    <div class="form-group">
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    <div class="form-group" data-sb-validations="required">
+        {{ form_label(form.login	, ' login')  }}
+        {{ form_widget(form.login	  ,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' login'}} ) }}
+        {{ form_errors(form.login ) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.email, 'email ')  }}
+
+        {{ form_widget(form.email , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'email '}} ) }}
+        {{ form_errors(form.email) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_label(form.mdp, 'mdp')  }}
+
+        {{ form_widget(form.mdp , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'mdp'}} ) }}
+        {{ form_errors(form.mdp) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.nom, 'nom')  }}
+
+        {{ form_widget(form.nom , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'nom'}} ) }}
+        {{ form_errors(form.nom) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.prenom, 'prenom')  }}
+
+        {{ form_widget(form.prenom , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'prenom'}} ) }}
+        {{ form_errors(form.prenom) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.datenaissance, ' datenaissance')  }}
+
+        {{ form_widget(form.datenaissance , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' datenaissance'}} ) }}
+        {{ form_errors(form.datenaissance) }}
+    </div>
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        {{ form_label(form.genre, ' genre')  }}
+
+        {{ form_widget(form.genre , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' genre'}} ) }}
+        {{ form_errors(form.genre) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.tel, ' tel')  }}
+
+        {{ form_widget(form.tel , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' tel'}} ) }}
+        {{ form_errors(form.tel) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.addresse, ' addresse')  }}
+
+        {{ form_widget(form.addresse , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' addresse'}} ) }}
+        {{ form_errors(form.addresse) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.imageuser, ' imageuser')  }}
+
+        {{ form_widget(form.imageuser , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' imageuser'}} ) }}
+        {{ form_errors(form.imageuser) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.role, ' role')  }}
+
+        {{ form_widget(form.role , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' role'}} ) }}
+        {{ form_errors(form.role) }}
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
