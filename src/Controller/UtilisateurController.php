@@ -78,10 +78,10 @@ class UtilisateurController extends AbstractController
             $em->flush();
             $this->getDoctrine()->getManager()->flush();
 $msg = $Utilisateur->getNom();
-            $message = (new \Swift_Message("Bienvenue à Eventum".$msg))
+            $message = (new \Swift_Message("Bienvenue à ADL".$msg))
 
                 ->setFrom('eventum20@gmail.com')
-                ->setTo('mohamedaziz.khemira@esprit.tn')
+                ->setTo('asmaboubaker11@gmail.com')
                 //message avec vue twig
                 ->setBody(
                     $this->renderView(

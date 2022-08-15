@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups ;
  */
 class Utilisateur implements UserInterface
 {
+    const ROLE_ADMIN='ROLE_ADMIN';
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -313,6 +314,11 @@ class Utilisateur implements UserInterface
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
+    }
+
+
+    public function isAdmin():bool{
+        return is_array(self::ROLE_ADMIN, $this->getRole());
     }
 
 }

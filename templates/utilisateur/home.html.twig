@@ -69,18 +69,20 @@
                                 <div class="collapse navbar-collapse bg-white px-0" id="navbarSupportedContent-4">
                                     <!-- SEARCH -->
                                      {% if "IS_AUTHENTICATED_FULLY" %}
-            {% set user = app.user %}
-   {% set nom =  user.nom %}
+           {% set nom = "no user connected" %}
 
         {% else %}
-{% set nom = "no user connected" %}
+
+ {% set user = app.user %}
+   {% set nom =  user.nom %}
         {% endif %}
      
-                                    <div class="header-nav-right p-5">
-                                        <a href="register.html" class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto"
+                                    <div  class="header-nav-right p-5">
+                                        <a  href="register.html" class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto"
                                             target="_blank">{{nom}}
                                         </a>
-                                        <a href={{ path("app_login") }}" class="btn ripple btn-min w-sm btn-primary me-2 my-auto"
+                                        
+                                        <a href="{{ path('app_logout') }}" class="btn ripple btn-min w-sm btn-primary me-2 my-auto"
                                             target="_blank">Logout
                                         </a>
                                     </div>
@@ -135,12 +137,12 @@
                                         </li>
                                     </ul>
                                     {% if "IS_AUTHENTICATED_FULLY" %}
-           {% set user = app.user %}
-           {% set nom =  user.nom %}
+              {% set nom = "no user connected" %}
 
         {% else %}
+         {% set user = app.user %}
+           {% set nom =  user.nom %}
          
-            {% set nom = "no user connected" %}
         {% endif %}
         
                                     <div class="header-nav-right d-none d-lg-flex">
@@ -148,7 +150,7 @@
                                             class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto d-lg-none d-xl-block d-block"
                                             target="_blank">{{nom}}
                                         </a>
-                                        <a href={{ path("app_login") }} class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                                        <a href={{ path('app_logout') }} class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block"
                                             target="_blank">Logout
                                         </a>
                                     </div>

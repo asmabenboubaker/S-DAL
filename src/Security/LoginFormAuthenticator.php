@@ -100,6 +100,12 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     {
         return $credentials['password'];
     }
+    /**
+     * @param Request $request
+     * @param TokenInterface $token
+     * @param string $providerkey
+     * @param Response|void|null
+     */
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
@@ -127,7 +133,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         //$id = $authenticationUtils->getUser()->getId() ;
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-
+//if adminn 
+        if ($token->getUser()->isAdmin()){
+            return new RedirectResponse($this->urlGenerator->generate('admin'));
+        }
         return new RedirectResponse($this->urlGenerator->generate('home'));
 
 

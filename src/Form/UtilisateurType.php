@@ -18,7 +18,7 @@ class UtilisateurType extends AbstractType
         $builder
             ->add('login')
             ->add('email')
-            ->add('mdp', PasswordType::class )
+            ->add('mdp' )
             ->add('nom')
             ->add('prenom')
            
@@ -35,7 +35,7 @@ class UtilisateurType extends AbstractType
             ->add('role', ChoiceType::class,[
                 'choices' => [
                     'Client' => 'Client',
-                    'Partenaire' => 'Partenaire',
+                    'Admin' => 'admin',
 
                 ],
                 'expanded' => true
