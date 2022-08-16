@@ -167,15 +167,7 @@ $msg = $Utilisateur->getNom();
         return $this->render("utilisateur/ajouterutilisateur.html.twig",array("form"=>$form->createView()));
     }
 
-    /**
-     * @Route("/afficherusers",name="afficherusers")
-     */
-    public function afficherusers   (UtilisateurRepository $repository){
-        $tableusers=$repository->findAll();
-        return $this->render('utilisateur/afficherusers.html.twig'
-            ,['tableusers'=>$tableusers]);
-
-    }
+    
 
     /**
      * @Route("/supprimeruser/{id}",name="supprimeruser")

@@ -134,8 +134,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
 //if adminn 
+
+ 
         if ($token->getUser()->isAdmin()){
-            return new RedirectResponse($this->urlGenerator->generate('admin'));
+            return new RedirectResponse($this->urlGenerator->generate('app_admin'));
         }
         return new RedirectResponse($this->urlGenerator->generate('home'));
 

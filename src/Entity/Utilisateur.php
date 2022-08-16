@@ -14,7 +14,9 @@ use Symfony\Component\Serializer\Annotation\Groups ;
  */
 class Utilisateur implements UserInterface
 {
-    const ROLE_ADMIN='ROLE_ADMIN';
+
+
+    public const ROLE_ADMIN='ROLE_ADMIN';
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -101,8 +103,13 @@ class Utilisateur implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    
     private $imageuser;
 
+/**
+ * @ORM\Column(type="json", nullable=true)
+ */
+private $roles;
 
     public function getId(): ?int
     {
@@ -306,19 +313,24 @@ class Utilisateur implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
+ /**
+     * @see UserInterface
+     */
     public function getRoles()
     {
-        $roles = json_decode($this->role);
+       // $roles = json_decode($this->roles);
         // guarantee every user at least has ROLE_USER
+        
+        $roles = $this->roles;
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
-    }
+    } 
 
 
     public function isAdmin():bool{
-        return is_array(self::ROLE_ADMIN, $this->getRole());
+        return in_array(self::ROLE_ADMIN, $this->getRoles());
     }
 
 }
+
