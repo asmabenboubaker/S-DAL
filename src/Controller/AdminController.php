@@ -17,6 +17,7 @@ class AdminController extends AbstractController
         $tableusers=$repository->findAll();
         return $this->render('admin/afficherusers.html.twig'
             ,['tableusers'=>$tableusers]);
+            /*jjjjjjjjjjjj*/
 
     }
 }
