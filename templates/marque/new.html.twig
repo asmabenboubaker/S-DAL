@@ -2,11 +2,22 @@
 
 {% block body %}
 
+    <h1 class="h3 mb-2 text-gray-800">Ajouter un Utilisateur
 
- 
-    <h1>Create new Marque</h1>
+    <div class="form-group">
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
 
-    {{ include('marque/_form.html.twig') }}
+    <div class="form-group" data-sb-validations="required">
+        {{ form_label(form.nom	, ' nom')  }}
+        {{ form_widget(form.nom	  ,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' Nom'}} ) }}
+        {{ form_errors(form.nom ) }}
 
-    <a href="{{ path('app_marque_index') }}">back to list</a>
-{% endblock %}
+    </div>
+    <div class="form-group" data-sb-validations="required">
+        {{ form_label(form.description	, ' description')  }}
+        {{ form_widget(form.description	  ,{'attr': {'class': 'form-control form-control-user' , 'placeholder' : ' Description'}} ) }}
+        {{ form_errors(form.description ) }}
+
+    </div>
+     {{ form_end(form) }}
+     {% endblock %}

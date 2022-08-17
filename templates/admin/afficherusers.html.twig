@@ -1,11 +1,13 @@
-{% extends 'base-back.html.twig' %}
+
+                {% extends 'base-back.html.twig' %}
 
 {% block body %}
 
 
-    <h1>Liste des Utilisateurs</h1>
+    <h1 class="card-title mb-0" >Liste des Utilisateurs</h1>
 
-
+<div class="main-content app-content mt-0">
+                <div class="side-app">
 
     <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
 
@@ -67,6 +69,8 @@
         </tbody>
 
     </table>
+    </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){

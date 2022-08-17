@@ -177,7 +177,7 @@ $msg = $Utilisateur->getNom();
         $em->remove($user);
         $em->flush();
 
-        return $this->redirectToRoute('afficherusers');
+        return $this->redirectToRoute('app_admin');
     }
 
     /**
