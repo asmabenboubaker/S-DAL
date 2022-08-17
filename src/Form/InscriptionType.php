@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Utilisateur;
+use Asma\RecaptchaBundle\Type\RecaptchaSubmitType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -21,7 +22,7 @@ class InscriptionType extends AbstractType
             ->add('mdp', PasswordType::class )
             ->add('nom')
             ->add('prenom')
-          
+          ->add('captcha', RecaptchaSubmitType::class)
             ->add('genre', ChoiceType::class,[
                 'choices' => [
                     'homme' => 'homme',
