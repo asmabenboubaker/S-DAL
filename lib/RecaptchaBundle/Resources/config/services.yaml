@@ -1,0 +1,7 @@
+services:
+  recaptcha.type:
+    class: Asma\RecaptchaBundle\Type\RecaptchaSubmitType
+    tags: ['form.type']
+    arguments:
+      $key: '%recaptcha.key%'
+      

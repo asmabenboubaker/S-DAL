@@ -22,7 +22,9 @@ class InscriptionType extends AbstractType
             ->add('mdp', PasswordType::class )
             ->add('nom')
             ->add('prenom')
-          ->add('captcha', RecaptchaSubmitType::class)
+          ->add('captcha', RecaptchaSubmitType::class,
+          ['label'=>'Envoyer']
+          )
             ->add('genre', ChoiceType::class,[
                 'choices' => [
                     'homme' => 'homme',
