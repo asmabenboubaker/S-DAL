@@ -68,24 +68,10 @@
                             <div class="navbar navbar-collapse responsive-navbar p-0">
                                 <div class="collapse navbar-collapse bg-white px-0" id="navbarSupportedContent-4">
                                     <!-- SEARCH -->
-                                     {% if "IS_AUTHENTICATED_FULLY" %}
-           {% set nom = "no user connected" %}
-
-        {% else %}
-
- {% set user = app.user %}
-   {% set nom =  user.nom %}
-        {% endif %}
+                                     
+        
      
-                                    <div  class="header-nav-right p-5">
-                                        <a  href="register.html" class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto"
-                                            target="_blank">{{nom}}
-                                        </a>
-                                        
-                                        <a href="{{ path('app_logout') }}" class="btn ripple btn-min w-sm btn-primary me-2 my-auto"
-                                            target="_blank">Logout
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -136,24 +122,28 @@
                                                     class="side-menu__label">Contact</span></a>
                                         </li>
                                     </ul>
-                                    {% if "IS_AUTHENTICATED_FULLY" %}
-              {% set nom = "no user connected" %}
-
-        {% else %}
-         {% set user = app.user %}
-           {% set nom =  user.nom %}
-         
-        {% endif %}
-        
-                                    <div class="header-nav-right d-none d-lg-flex">
-                                        <a href="register.html"
-                                            class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto d-lg-none d-xl-block d-block"
-                                            target="_blank">{{nom}}
-                                        </a>
-                                        <a href={{ path('app_logout') }} class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                                   {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+     
+      <a href={{ path('app_logout') }} class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block"
                                             target="_blank">Logout
                                         </a>
-                                    </div>
+                                        {% set user = app.user %}
+                              {% set nom =  user.nom %}
+                               
+                              <a 
+                                            class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                                            target="_blank"> Hello {{nom}}
+                                        </a>
+{% else %}
+  <a href={{ path('app_login') }} class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                                            target="_blank">login
+                                        </a>
+                                         <a href={{ path('inscription') }}
+                                            class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                                            target="_blank">Sign UP
+                                        </a>
+{% endif %}
+         
                                 </div>
                             </div>
                         </div>

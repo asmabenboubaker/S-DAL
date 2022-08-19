@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Utilisateur;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Asma\RecaptchaBundle\Type\RecaptchaSubmitType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
@@ -12,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\IsTrue;
+
 class InscriptionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -22,6 +25,15 @@ class InscriptionType extends AbstractType
             ->add('mdp', PasswordType::class )
             ->add('nom')
             ->add('prenom')
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                 
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Agree the terms and policy'
+                    ])
+                ]
+            ])
           ->add('captcha', RecaptchaSubmitType::class,
           ['label'=>'Envoyer']
           )

@@ -8,10 +8,13 @@
 
 <div class="main-content app-content mt-0">
                 <div class="side-app">
+<div class="main-header-center ms-3 d-none d-lg-block">
+                            <input  type="text" class="form-control" id="myInput"  placeholder="Search for results...">
+                            <button class="btn px-0 pt-2"><i class="fe fe-search" aria-hidden="true"></i></button>
+                        </div>
+  
 
-    <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
-
-    <button class="btn btn-success btn-icon-split" ><a href="{{ path('ajouterUtilisateur')  }}"><span class="text" style="color: white">Ajouter </span></a></button>
+    
 
 
 
@@ -19,31 +22,27 @@
     <table class="table table-bordered" id="t"  width="100%" cellspacing="0">
         <thead>
         <tr>
-            <th> </th>
-            <th> </th>
+            <th> Action</th>
+          
             <th>id  </th>
             <th>nom </th>
             <th>prenom </th>
             <th>login</th>
-            <th>datenaissance</th>
+          
             <th> email</th>
             <th>genre</th>
-            <th>tel</th>
-            <th>addresse</th>
-            <th>imgproduit</th>
+             
         </tr> </thead> <tbody id="myTable">
         {% for i in tableusers %}
             <tr>
-                <td>  <a href="{{ path('modifieruser',{'id': i.id}) }}"  class="btn btn-info btn-icon-split">
-                                            <span class="icon text-white-50">
-                        <i class="fas fa-info-circle"></i>
-
-                    </span>
-                        <span class="text">Modifier</span>
-
-                    </a></td>
-
-                <td><a href="{{ path('supprimeruser',{'id': i.id}) }}"><img src="https://img.icons8.com/color/48/000000/trash--v2.png"/></a></td>
+                <td> <a href="{{ path('modifieruser',{'id': i.id}) }}" class="btn text-primary btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Edit"><span
+                                                                                                class="fe fe-edit fs-14"></span></a>
+                                                                                        <a href="{{ path('supprimeruser',{'id': i.id}) }}" class="btn text-danger btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Delete"><span
+                                                                                                class="fe fe-trash-2 fs-14"></span></a></td>
 
                 <td>{{ i.id  }}</td>
                 <td>{{ i.nom }}</td>
@@ -52,10 +51,9 @@
                  
                 <td>{{ i.email }}</td>
                 <td>{{ i.genre }}</td>
-                <td>{{ i.addresse }}</td>
-                <td>{{ i.tel }}</td>
+                
 
-                <td><img src="{{ asset('/back/images/')}}{{ i.imageuser }}" width="100"  /></td>
+                
 
 
 
@@ -69,6 +67,7 @@
         </tbody>
 
     </table>
+    <button class="btn btn-success btn-icon-split" ><a href="{{ path('ajouterUtilisateur')  }}"><span class="text" style="color: white">Ajouter </span></a></button>
     </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

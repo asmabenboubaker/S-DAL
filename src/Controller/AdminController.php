@@ -20,4 +20,14 @@ class AdminController extends AbstractController
             /*jjjjjjjjjjjj*/
 
     }
+    /**
+     * @Route("/dash", name="dash")
+     */
+    public function dash   (UtilisateurRepository $repository){
+        $tableusers=$repository->findAll();
+        return $this->render('admin/dash.html.twig'
+            ,['tableusers'=>$tableusers]);
+            /*jjjjjjjjjjjj*/
+
+    }
 }

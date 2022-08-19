@@ -58,6 +58,7 @@ class UtilisateurController extends AbstractController
     public function inscription(Request $request, UserPasswordEncoderInterface $passwordEncoder,\Swift_Mailer $mailer): Response
     {
 
+        $bool=false;
         $Utilisateur  = new Utilisateur ();
 
         $form= $this->createForm(InscriptionType::class,$Utilisateur);
@@ -65,6 +66,9 @@ class UtilisateurController extends AbstractController
 
 
         if($form->isSubmitted() && $form->isValid()){
+            if (true === $form['agreeTerms']->getData()) {
+                
+           
           $Utilisateur->setRole("Client");
             $Utilisateur->setMdp(
                 $passwordEncoder->encodePassword($Utilisateur,
@@ -91,15 +95,11 @@ $msg = $Utilisateur->getNom();
                 ) ;
 
             $mailer->send($message);
-
-
-
-
-
+ 
 
             return $this->redirectToRoute("login");
-
-
+                }
+                
         }
         return $this->render("utilisateur/inscription.html.twig",array("form"=>$form->createView()));
     }
@@ -209,7 +209,7 @@ $msg = $Utilisateur->getNom();
             $this->getDoctrine()->getManager()->flush();
 
 
-            return $this->redirectToRoute('afficherusers');
+            return $this->redirectToRoute('app_admin');
         }
 
         return $this->render('utilisateur/modifierutilisateur.html.twig', [
