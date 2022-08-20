@@ -1,13 +1,12 @@
 <?php
 
 namespace Asma\RecaptchaBundle\Type;
-
-use Doctrine\DBAL\Types\TextType;
+ 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
 use Symfony\Component\Form\FormInterface as FormFormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\Test\FormInterface;
+ 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RecaptchaSubmitType extends AbstractType
@@ -22,7 +21,8 @@ class RecaptchaSubmitType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'mapped' => false
+            'mapped' => false,
+             
         ]);
     }
 

@@ -17,7 +17,7 @@
      </script>
      
 {% set label=button %}
-{% set attr=attr | merge({class: 'g-recaptcha' , 'data-sitekey': key, 'data-callback': id ~ 'RecaptchaSubmit'}) %}
+{% set attr=attr | merge({class: 'g-recaptcha , login100-form-btn btn-primary' , 'data-sitekey': key, 'data-callback': id ~ 'RecaptchaSubmit'}) %}
 {% block submit_widget %}
 {% endblock %}
 {% endblock %}

@@ -30,12 +30,14 @@ class InscriptionType extends AbstractType
                  
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Agree the terms and policy'
+                        'message' => 'You must agree to our terms.'
                     ])
                 ]
             ])
           ->add('captcha', RecaptchaSubmitType::class,
-          ['label'=>'Envoyer']
+          ['label'=>'Envoyer' 
+           
+          ]
           )
             ->add('genre', ChoiceType::class,[
                 'choices' => [
