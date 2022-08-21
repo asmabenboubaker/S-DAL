@@ -12,11 +12,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use Doctrine\ORM\EntityManagerInterface;
-
+use Swift_Mailer;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+ 
 
 class UtilisateurController extends AbstractController
 {
@@ -82,7 +85,7 @@ class UtilisateurController extends AbstractController
             $em->flush();
             $this->getDoctrine()->getManager()->flush();
 $msg = $Utilisateur->getNom();
-            $message = (new \Swift_Message("Bienvenue à ADL".$msg))
+          /*  $message = (new \Swift_Message("Bienvenue à ADL".$msg))
 
                 ->setFrom('eventum20@gmail.com')
                 ->setTo('asmaboubaker11@gmail.com')
@@ -94,9 +97,16 @@ $msg = $Utilisateur->getNom();
                     'text/html'
                 ) ;
 
-            $mailer->send($message);
+           $mailer->send($message);
  
+$email=(new Email())
+->from('asmaboubaker11@gmail.com')
+->to($Utilisateur->getEmail())
+->subject('welcame to dal')
+->text("dal");
 
+ 
+$mailer->send($email);*/
             return $this->redirectToRoute("login");
                 }
                 
