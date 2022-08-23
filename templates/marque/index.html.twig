@@ -2,8 +2,14 @@
 
 {% block body %}
 
+   
+<div class="main-content app-content mt-0">
+                <div class="side-app">
+ 
 
-    <h1>Marque index</h1>
+
+    <br><br>
+    <h1>Gestion des marques </h1>
 
     <table class="table">
         <thead>
@@ -21,11 +27,17 @@
                 <td>{{ marque.id }}</td>
                 <td>{{ marque.nom }}</td>
                 <td>{{ marque.description }}</td>
-                <td>{{ marque.image }}</td>
-                <td>
-                    <a href="{{ path('app_marque_show', {'id': marque.id}) }}">show</a>
-                    <a href="{{ path('app_marque_edit', {'id': marque.id}) }}">edit</a>
-                </td>
+        
+                <td><img src="{{ asset('/back/images/')}}{{ marque.image }}" width="100"  /></td>
+              <td> <a href="{{ path('app_marque_edit',{'id': marque.id}) }}" class="btn text-primary btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Edit"><span
+                                                                                                class="fe fe-edit fs-14"></span></a>
+                                                                                        <a href="{{ path('app_marque_delete',{'id': marque.id}) }}" class="btn text-danger btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Delete"><span
+                                                                                                class="fe fe-trash-2 fs-14"></span></a></td>
+                    
             </tr>
         {% else %}
             <tr>
@@ -36,4 +48,17 @@
     </table>
 
     <a href="{{ path('app_marque_new') }}">Create new</a>
+    </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 {% endblock %}
