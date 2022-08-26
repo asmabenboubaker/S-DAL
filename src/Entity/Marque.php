@@ -31,6 +31,13 @@ class Marque
      * @ORM\Column(type="string", length=255)
      */
     private $image;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity=Cat::class, inversedBy="marque",cascade={"persist"})
+     *  
+     */
+    private $cat;
+
 
     public function getId(): ?int
     {
@@ -69,6 +76,17 @@ class Marque
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+    public function getCat(): ?Cat
+    {
+        return $this->cat;
+    }
+
+    public function setCat(?Cat $cat): self
+    {
+        $this->cat = $cat;
 
         return $this;
     }

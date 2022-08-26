@@ -3,11 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Marque;
+use App\Entity\Cat;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 class MarqueType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -16,6 +18,9 @@ class MarqueType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('image',FileType::class, array('data_class' => null))
+            ->add('cat', EntityType::class, [
+                'class' => Cat::class,
+                'choice_label' => 'nom', ])
             ->add("submit",SubmitType::class)
         ;
     }

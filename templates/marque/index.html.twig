@@ -17,6 +17,7 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
+                <th>Domaine</th>
                 <th>Image</th>
                 <th>actions</th>
             </tr>
@@ -27,7 +28,8 @@
                 <td>{{ marque.id }}</td>
                 <td>{{ marque.nom }}</td>
                 <td>{{ marque.description }}</td>
-        
+                  <td>{{ marque.cat}}</td>
+   
                 <td><img src="{{ asset('/back/images/')}}{{ marque.image }}" width="100"  /></td>
               <td> <a href="{{ path('app_marque_edit',{'id': marque.id}) }}" class="btn text-primary btn-sm"
                                                                                             data-bs-toggle="tooltip"

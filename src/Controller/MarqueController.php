@@ -57,7 +57,7 @@ class MarqueController extends AbstractController
             $em->flush();
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute("marque");
+            return $this->redirectToRoute("app_marque_index");
 
 
         }
