@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Cat;
 use App\Entity\Marque;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -73,4 +74,5 @@ class MarqueRepository extends ServiceEntityRepository
         ;
     }
     */
+  
 }

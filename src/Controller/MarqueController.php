@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Cat;
 use App\Entity\Marque;
 use App\Form\MarqueType;
 use App\Repository\MarqueRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +18,15 @@ class MarqueController extends AbstractController
      /**
      * @Route("/marque", name="app_marque_index")
      */
-    public function afficherusers   (MarqueRepository $repository){
+    public function afficherusers   (MarqueRepository $repository,Request $request, PaginatorInterface $paginator){
         $tableusers=$repository->findAll();
+        $marques = $paginator->paginate(
+            $tableusers, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            4 // Nombre de résultats par page
+        );
         return $this->render('marque/index.html.twig'
-            ,['marques'=>$tableusers]);
+            ,['marques'=>$marques]);
             
 
     }

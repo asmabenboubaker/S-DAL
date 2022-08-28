@@ -50,8 +50,10 @@
     </table>
 
     <a href="{{ path('app_marque_new') }}">Create new</a>
+    {{ knp_pagination_render(marques) }}
     </div>
     </div>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -63,4 +65,5 @@
             });
         });
     </script>
+
 {% endblock %}
