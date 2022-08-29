@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Cat;
 use App\Entity\Marque;
 use App\Form\MarqueType;
+use App\Form\SearchForm;
 use App\Repository\MarqueRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -19,14 +21,22 @@ class MarqueController extends AbstractController
      * @Route("/marque", name="app_marque_index")
      */
     public function afficherusers   (MarqueRepository $repository,Request $request, PaginatorInterface $paginator){
-        $tableusers=$repository->findAll();
+       
+       $data=new SearchData();
+       $form=$this->createForm(SearchForm::class,$data);
+
+       $form->handleRequest($request);
+        $tableusers=$repository->findSearch($data);
         $marques = $paginator->paginate(
             $tableusers, // Requête contenant les données à paginer (ici nos articles)
             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
             4 // Nombre de résultats par page
         );
         return $this->render('marque/index.html.twig'
-            ,['marques'=>$marques]);
+            ,['marques'=>$marques,
+            'form'=> $form->createView()
+        
+        ]);
             
 
     }

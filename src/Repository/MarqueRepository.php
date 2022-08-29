@@ -2,12 +2,14 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Cat;
 use App\Entity\Marque;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @method Marque|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,6 +22,7 @@ class MarqueRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Marque::class);
+       
     }
 
     /**
@@ -74,5 +77,32 @@ class MarqueRepository extends ServiceEntityRepository
         ;
     }
     */
+    /**
+     * @return Marque[]
+     */
+    public function findSearch(SearchData $search):array
+    {
+       $query=$this
+       ->createQueryBuilder('m')
+       ->select('c','m')
+       
+       ->join('m.cat','c');
+
+
+       if(!empty($search->q)){
+        $query=$query
+        ->andWhere('m.nom LIKE :q')
+        ->setParameter('q',"%{$search->q}%");
+       }
+
+       if(!empty($search->categories)){
+        $query=$query
+        ->andWhere('c.id IN (:categories)')
+        ->setParameter('categories',$search->categories);
+       }
+
+
+          return $query->getQuery()->getResult();
+    }
   
 }
