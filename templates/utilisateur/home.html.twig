@@ -713,38 +713,13 @@
                                                     <div class="row justify-content-center">
                                                         <div class="col-lg-12 px-0">
                                                             <div class="feature-logos mt-5">
+                                                                
+                                                               {% for marque in marques %}
                                                                 <div class="slide">
-                                                                    <img src="../assets/images/landing/web/1.png">
-                                                                    <h5 class="mt-3 text-white">Bootstrap5</h5>
+                                                                <img src="{{ asset('/back/images/')}}{{ marque.image }}" width="100"  />
+                                                                     <h5 class="mt-3 text-white">{{ marque.nom }}</h5>
                                                                 </div>
-                                                                <div class="slide">
-                                                                    <img src="../assets/images/landing/web/2.png">
-                                                                    <h5 class="mt-3 text-white">HTML5</h5>
-                                                                </div>
-                                                                <div class="slide">
-                                                                    <img src="../assets/images/landing/web/3.png">
-                                                                    <h5 class="mt-3 text-white">JQuery</h5>
-                                                                </div>
-                                                                <div class="slide">
-                                                                    <img src="../assets/images/landing/web/4.png">
-                                                                    <h5 class="mt-3 text-white">Sass</h5>
-                                                                </div>
-                                                                <div class="slide">
-                                                                    <img src="../assets/images/landing/web/5.png">
-                                                                    <h5 class="mt-3 text-white">Gulp</h5>
-                                                                </div>
-                                                                <div class="slide">
-                                                                    <img src="../assets/images/landing/web/6.png">
-                                                                    <h5 class="mt-3 text-white">NPM</h5>
-                                                                </div>
-                                                                <div class="slide">
-                                                                    <img src="../assets/images/landing/web/1.png">
-                                                                    <h5 class="mt-3 text-white">Bootstrap5</h5>
-                                                                </div>
-                                                                <div class="slide">
-                                                                    <img src="../assets/images/landing/web/2.png">
-                                                                    <h5 class="mt-3 text-white">HTML5</h5>
-                                                                </div>
+                                                                    {% endfor %}
                                                             </div>
                                                         </div>
                                                     </div>

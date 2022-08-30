@@ -19,19 +19,25 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Repository\MarqueRepository;
  
 
 class UtilisateurController extends AbstractController
 {
+
+    
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(MarqueRepository $rep): Response
     {
+        $data=$rep->findAll();
+        dump($data);
         return $this->render('utilisateur/home.html.twig', [
-            'controller_name' => 'TestController',
+            'marques' => $data,
         ]);
     }
+     
     /**
      * @Route("/userinfo", name="userinfo")
      */

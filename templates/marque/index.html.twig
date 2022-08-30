@@ -1,28 +1,61 @@
 {% extends 'base-back.html.twig' %}
 
 {% block body %}
+ 
+                   
 
 <div class="main-content app-content mt-0">
                 <div class="side-app">
+                 <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">Filter</h1>
+                            </div>
+
                       <div class="container">
                            <div class="row">
-                                  <div class="col-md-3">
-                                      {% include 'marque/_filter.html.twig'  with {form: form} only%}
+                                   
+                                  <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                        <div class="card overflow-hidden">
+                                         <div class="card-body">
+                                                <div class="d-flex">
+                                                        {% include 'marque/_filter.html.twig'  with {form: form} only%}
 
+                                                </div>
+                                         </div>
+                                         </div>
                                   </div>
+                              
                             <div class="col-md-9">
-                                                            <div class="grid">
-                                                                          {% for marque in marques %}
-                                                                               <p><img src="{{ asset('/back/images/')}}{{ marque.image }}" width="100"  /></p>
-
-                                                                            <p>{{ marque.id }}</p>
-                                                                                  <p>{{ marque.nom }}</p>
-                                                                                  <p>{{ marque.description }}</p>
-                                                                                    <p>{{ marque.cat}}</p>
-                                                                    
-
-                                                                          {% endfor %}
-                                                                   
+                                                        
+                                                                          
+                                                                            <div class="row">
+                            <div class="col-xl-4 col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title fw-semibold">Les Marques</h4>
+                                    </div>
+                                     {% for marque in marques %}
+                                    <div class="card-body pb-0">
+                                        <ul class="task-list">
+                                            <li class="d-sm-flex">
+                                                <div>
+                                                    <i class="task-icon bg-primary"></i>
+                                                    <h6 class="fw-semibold">{{ marque.nom }}<span
+                                                            class="text-muted fs-11 mx-2 fw-normal">{{ marque.cat }}</span>
+                                                    </h6>
+                                                    <p class="text-muted fs-12">{{ marque.description }}</p>
+                                                </div>
+                                                <div class="ms-auto d-md-flex">
+                                                    <img src="{{ asset('/back/images/')}}{{ marque.image }}" width="100"  />
+                                                </div>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div> 
          
                                                              </div>
                                                                       <div>
@@ -39,6 +72,10 @@
 </div>
                    
   </div>
-                            
+   
+</div>
+                   
+  </div>
+              
                     
 {% endblock %}

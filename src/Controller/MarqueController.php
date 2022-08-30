@@ -40,6 +40,29 @@ class MarqueController extends AbstractController
             
 
     }
+
+
+     /**
+     * @Route("/gestionmarque", name="marque")
+     */
+    public function affichermarque   (MarqueRepository $repository,Request $request, PaginatorInterface $paginator){
+       
+        $data=new SearchData();
+       
+         $tableusers=$repository->findSearch($data);
+         $marques = $paginator->paginate(
+             $tableusers, // Requête contenant les données à paginer (ici nos articles)
+             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+             4 // Nombre de résultats par page
+         );
+         return $this->render('marque/gestion.html.twig'
+             ,['marques'=>$marques
+             
+         
+         ]);
+             
+ 
+     }
      /**
          * @Route("/ajouterMarque", name="app_marque_new")
 
