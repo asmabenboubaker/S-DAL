@@ -97,7 +97,7 @@ class MarqueController extends AbstractController
             $em->flush();
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute("app_marque_index");
+            return $this->redirectToRoute("marque");
 
 
         }
@@ -111,7 +111,7 @@ class MarqueController extends AbstractController
         $em->remove($marque);
         $em->flush();
 
-        return $this->redirectToRoute('app_marque_index');
+        return $this->redirectToRoute('marque');
     }
     /**
      * @Route("/{id}/modifiermarque", name="app_marque_edit", methods={"GET","POST"})
@@ -142,7 +142,7 @@ class MarqueController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
 
-            return $this->redirectToRoute('app_marque_index');
+            return $this->redirectToRoute('marque');
         }
 
         return $this->render('marque/edit.html.twig', [
